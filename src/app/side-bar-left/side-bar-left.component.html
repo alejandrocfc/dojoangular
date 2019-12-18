@@ -1,0 +1,7 @@
+<div>
+  <p>side-bar-left works!</p>
+  <button (click)="click()">Change</button>
+  <ul>
+    <li *ngFor="let item of menu" (click)="getOption(item.path)">{{item.name}}</li>
+  </ul>
+</div>

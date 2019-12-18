@@ -1,0 +1,41 @@
+<p *ngIf="loading">cargando...</p>
+<div *ngIf="!loading">
+  <table>
+    <thead>
+      <th *ngFor="let i of head">{{i}}</th>
+      <th></th>
+    </thead>
+    <tbody>
+    <tr *ngFor="let item of list">
+      <td>{{item.identificacion}}</td>
+      <td>{{item.nombre}}</td>
+      <td>{{item.apellido}}</td>
+      <td>{{item.cargo}}</td>
+      <td>{{item.usuarioRed}}</td>
+      <td>{{item.estado}}</td>
+      <td>{{item.fechaRegistro | date: 'dd-MM-yy'}}</td>
+      <td><button (click)="edit(item)">Editar</button></td>
+    </tr>
+    </tbody>
+  </table>
+  <div class="has-form">
+    <form [formGroup]="Form" (ngSubmit)="onSubmit()">
+      <label for="name">Nombre</label>
+      <input type="text" formControlName="nombre" id="name">
+      <br>
+      <label for="lastname">Apellido</label>
+      <input type="text" formControlName="apellido" id="lastname">
+      <br>
+      <label for="cargo">Cargo</label>
+      <input type="text" formControlName="cargo" id="cargo">
+      <br>
+      <label for="username">Usuario de Red</label>
+      <input type="text" formControlName="usuarioRed" id="username">
+      <br>
+      <label for="estado">Estado</label>
+      <input type="text" formControlName="estado" id="estado">
+      <br>
+      <input type="submit" value="Guardar">
+    </form>
+  </div>
+</div>

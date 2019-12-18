@@ -1,0 +1,27 @@
+table{
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  border: 2px solid grey;
+}
+thead{
+  border: 2px solid grey;
+  th{
+    text-transform: capitalize;
+  }
+}
+tbody tr{
+  border: 1px solid grey;
+}
+th, td{
+  text-align: center;
+}
+th, td{
+  //padding: 20px;
+}
+button{
+  cursor: pointer;
+}
+.has-form{
+  padding: 20px;
+}

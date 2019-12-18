@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'dojoangular';
+  msj = 'Msj from parent';
+  changeMsj(msj: string) {
+    this.msj = msj;
+  }
 }
