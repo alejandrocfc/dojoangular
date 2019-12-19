@@ -19,7 +19,7 @@
       <label for="estado">Estado</label>
       <input type="text" formControlName="estado" id="estado">
       <br>
-      <input type="submit" value="Guardar">
+      <input type="submit" value="Guardar" [disabled]="!Form.valid">
     </form>
   </div>
 </div>
