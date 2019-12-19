@@ -38,9 +38,7 @@ export class HomeComponent implements OnInit {
   }
 
   edit(item) {
-    Object.keys(item).map( key => {
-      this.Form[key] = item.key;
-    });
+    this.Form.patchValue(item);
   }
 
   onSubmit() {
