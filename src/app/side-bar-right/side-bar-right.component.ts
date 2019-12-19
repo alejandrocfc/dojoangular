@@ -26,7 +26,7 @@ export class SideBarRightComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userService.userInfo.subscribe(user => this.Form.patchValue(user) );
+    this.userService.getUser().subscribe(user => this.Form.patchValue(user) );
   }
 
   click() {
