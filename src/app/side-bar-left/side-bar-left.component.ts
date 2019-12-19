@@ -22,6 +22,7 @@ export class SideBarLeftComponent implements OnInit {
   }
 
   getOption(path) {
+    this.chMsj.emit(`Route active ${path}`);
     this.router.navigateByUrl(path);
   }
 
