@@ -1,4 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {EditUserService} from '../edit-user.service';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-side-bar-right',
@@ -10,13 +12,29 @@ export class SideBarRightComponent implements OnInit {
   @Input() msj;
   @Output() chgMsj = new EventEmitter();
 
-  constructor() { }
+  user;
+  Form: FormGroup;
 
-  ngOnInit() {
+  constructor(public formBuild: FormBuilder, public userService: EditUserService) {
+    this.Form = formBuild.group({
+      nombre: ['', Validators.required],
+      apellido: ['', Validators.required],
+      cargo: ['', Validators.required],
+      usuarioRed: ['', Validators.required],
+      estado: ['', Validators.required]
+    });
   }
 
-  click(){
+  ngOnInit() {
+    this.userService.userInfo.subscribe(user => this.Form.patchValue(user) );
+  }
+
+  click() {
     this.chgMsj.emit('I`m inevitable');
+  }
+
+  onSubmit() {
+    console.log(this.Form.value);
   }
 
 }

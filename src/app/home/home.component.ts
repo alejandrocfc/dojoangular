@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ServiceMainService} from '../service-main.service';
 import {Colaboradores} from '../models/colaboradores.model';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {EditUserService} from '../edit-user.service';
 
 @Component({
   selector: 'app-home',
@@ -11,18 +12,10 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 export class HomeComponent implements OnInit {
 
   list;
-  Form: FormGroup;
   head: Array<string>;
   loading = true;
 
-  constructor(public http: ServiceMainService, public formBuild: FormBuilder) {
-    this.Form = formBuild.group({
-      nombre: ['', Validators.required],
-      apellido: ['', Validators.required],
-      cargo: ['', Validators.required],
-      usuarioRed: ['', Validators.required],
-      estado: ['', Validators.required]
-    });
+  constructor(public http: ServiceMainService, public editUser: EditUserService) {
   }
 
 
@@ -38,11 +31,7 @@ export class HomeComponent implements OnInit {
   }
 
   edit(item) {
-    this.Form.patchValue(item);
-  }
-
-  onSubmit() {
-    console.log(this.Form.value);
+    this.editUser.setUser(item);
   }
 
 }
